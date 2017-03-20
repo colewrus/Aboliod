@@ -192,7 +192,7 @@ public class GM : MonoBehaviour {
 			GameObject.FindGameObjectWithTag ("ball").GetComponent<SpriteRenderer> ().color = tmpBallAlpha;
 			GameObject.FindGameObjectWithTag ("ball").GetComponent<Rigidbody2D> ().isKinematic = true;
 			brickWin.SetActive (true);
-			//Instantiate (pepeWin, Camera.main.ScreenToWorldPoint (new Vector3 (Screen.width / 2, Screen.height / 2, 5)), Quaternion.identity);
+			SoundManager.Instance.PlaySingle (SoundManager.Instance.applause, 0.65f);
 			Instantiate (brickWin, Camera.main.ScreenToWorldPoint (new Vector3 (Screen.width / 2, (Screen.height/2)+(2* pepeWin.GetComponent<SpriteRenderer>().bounds.size.y), 5)), Quaternion.identity);
 			GameObject.FindGameObjectWithTag ("bricks").SetActive (false);	
 		
@@ -201,7 +201,8 @@ public class GM : MonoBehaviour {
 		if (bricks < 1)
         {			
 			gameWon = true;
-			SoundManager.Instance.PlaySingle(SoundManager.Instance.wonSound, 0.15f);
+			SoundManager.Instance.PlaySingle(SoundManager.Instance.victory, 0.65f);
+			musicSource.volume = 0.25f;
             youWon.SetActive(true);
 			endFade = true;
 

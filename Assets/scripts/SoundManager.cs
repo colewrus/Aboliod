@@ -15,7 +15,8 @@ public class SoundManager : MonoBehaviour {
     public AudioClip overSound;
     public AudioClip buttonPress;
     public AudioClip muted;
-
+	public AudioClip victory;
+	public AudioClip applause;
 
 
     //Developer Tools - UI
