@@ -66,6 +66,7 @@ public class photoPuzzle : MonoBehaviour {
 		//Screen.SetResolution(Screen.currentResolution.width, Screen.currentResolution.height, true);
 		Screen.SetResolution(600, 800, false);
 
+
 		//set language
 		if (contant_Script.instance.spanish) {
 			tutorialText.text = "Tocá para reacomodar las piezas y completar la imagen.";
@@ -82,7 +83,7 @@ public class photoPuzzle : MonoBehaviour {
 			} else if (SceneManager.GetActiveScene ().name == "slideLoad2") {
 				winImage.GetComponent<SpriteRenderer> ().sprite = final_img_lvl2_EN;
 			}
-		}
+		} 
 
 
 		//start our loop enders to false - this end the loops that generate the images during setup
@@ -97,7 +98,7 @@ public class photoPuzzle : MonoBehaviour {
 			musicSource.volume = 0.5f;
 		}
 		//declare Ienumerators
-
+		print (SceneManager.GetActiveScene().buildIndex);
 
 		instruct_Bool = false;
 		//Panel Stuff
@@ -189,6 +190,7 @@ public class photoPuzzle : MonoBehaviour {
 		}
 
 		if (shuffleBool) {
+			
 			winBool = true;
 			for (int i = 0; i < slides.Count; i++) {
 				if (slides [i].transform.position != positions [i]) {
@@ -201,9 +203,22 @@ public class photoPuzzle : MonoBehaviour {
 				Color tmp = winImage.GetComponent<SpriteRenderer> ().color;
 				tmp.a = Mathf.Lerp (tmp.a, 1, Time.deltaTime * 2);
 				winImage.GetComponent<SpriteRenderer> ().color = tmp;
+				if (Input.GetMouseButtonUp (0)) { //tap & on release move on to the next level
+					nextLevel_forInvoke ();
+				}
+				Invoke ("nextLevel_forInvoke", 10); // load the next level after waiting for a bit
 			}
 		}
 
+	}
+
+	void nextLevel_forInvoke(){
+		if (SceneManager.GetActiveScene ().buildIndex == 4) {
+			SceneManager.LoadScene (1);
+		}
+		if (SceneManager.GetActiveScene ().buildIndex == 3) {
+			SceneManager.LoadScene (2);
+		}
 	}
 
 	public void Exit_Press(){
@@ -276,6 +291,11 @@ public class photoPuzzle : MonoBehaviour {
 				}
 			}
 		}
+
+		int tempInt = 0;
+
+
+		//maybe play countdown sound
 		yield return new WaitForSeconds (shuffleDelay);
 
 		//shuffle the images
