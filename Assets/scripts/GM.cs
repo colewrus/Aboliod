@@ -186,16 +186,18 @@ public class GM : MonoBehaviour {
 			Color tmpBrickAlpha = GameObject.FindGameObjectWithTag ("bricks").GetComponent<SpriteRenderer> ().color;
 			tmpBrickAlpha.a = 0;
 			print (tmpBrickAlpha);
-			GameObject.FindGameObjectWithTag ("bricks").GetComponent<SpriteRenderer> ().color = tmpBrickAlpha;
+			GameObject[] tempList = GameObject.FindGameObjectsWithTag ("bricks");
+			for (int i = 0; i < tempList.Length; i++) {
+				tempList [i].GetComponent<SpriteRenderer> ().color = tmpBrickAlpha;
+			}
 			Color tmpBallAlpha = GameObject.FindGameObjectWithTag ("ball").GetComponent<SpriteRenderer> ().color;
-			tmpBallAlpha.a = 0;
-			GameObject.FindGameObjectWithTag ("ball").GetComponent<SpriteRenderer> ().color = tmpBallAlpha;
+
+
 			GameObject.FindGameObjectWithTag ("ball").GetComponent<Rigidbody2D> ().isKinematic = true;
 			brickWin.SetActive (true);
 			SoundManager.Instance.PlaySingle (SoundManager.Instance.applause, 0.65f);
 			Instantiate (brickWin, Camera.main.ScreenToWorldPoint (new Vector3 (Screen.width / 2, (Screen.height/2)+(2* pepeWin.GetComponent<SpriteRenderer>().bounds.size.y), 5)), Quaternion.identity);
-			GameObject.FindGameObjectWithTag ("bricks").SetActive (false);	
-		
+			GameObject.FindGameObjectWithTag ("bricks").SetActive (false);			
 		}
 
 		if (bricks < 1)
