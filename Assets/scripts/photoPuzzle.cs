@@ -63,8 +63,8 @@ public class photoPuzzle : MonoBehaviour {
 
 
 		//Set the screen resolution
-		//Screen.SetResolution(Screen.currentResolution.width, Screen.currentResolution.height, true);
-		Screen.SetResolution(600, 800, false);
+		Screen.SetResolution(Screen.currentResolution.width, Screen.currentResolution.height, true);
+		//Screen.SetResolution(600, 800, false);
 
 
 		//set language

@@ -54,8 +54,8 @@ public class MenuScript : MonoBehaviour {
 	int list_Tracker;
 
 	void Start(){
-		//Screen.SetResolution(Screen.currentResolution.width, Screen.currentResolution.height, true);
-		Screen.SetResolution(600, 800, false);
+		Screen.SetResolution(Screen.currentResolution.width, Screen.currentResolution.height, true);
+		//Screen.SetResolution(600, 800, false);
 		Color tmp = aboutPanel.GetComponent<Image>().color;
 		tmp.a = 0;
 		aboutPanel.GetComponent<Image> ().color = tmp;

@@ -84,8 +84,8 @@ public class GM : MonoBehaviour {
     public void Setup()
     {
 		//Set the screen resolution
-		//Screen.SetResolution(Screen.currentResolution.width, Screen.currentResolution.height, true);
-		Screen.SetResolution(600, 800, false);
+		Screen.SetResolution(Screen.currentResolution.width, Screen.currentResolution.height, true);
+		//Screen.SetResolution(600, 800, false);
 
 		//Set the language
 		if (contant_Script.instance.spanish) {
