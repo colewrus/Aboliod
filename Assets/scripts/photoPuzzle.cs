@@ -64,7 +64,7 @@ public class photoPuzzle : MonoBehaviour {
 
 		//Set the screen resolution
 		//Screen.SetResolution(Screen.currentResolution.width, Screen.currentResolution.height, true);
-		Screen.SetResolution(600, 800, false);
+		//Screen.SetResolution(600, 800, false);
 
 
 		//set language
@@ -122,7 +122,7 @@ public class photoPuzzle : MonoBehaviour {
 		tmpText.a = 0;
 		tutorialText.GetComponent<Text> ().color = tmpText;
 
-		transform.position = new Vector3 (10.75f, -10, -10);
+		
 		slides = new List<GameObject> ();
 		positions = new List<Vector3> ();
 

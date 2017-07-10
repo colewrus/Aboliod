@@ -6,7 +6,9 @@ using System.Collections.Generic;
 
 public class MenuScript : MonoBehaviour {
 
-	public AudioClip buttonPress;
+    public List<AudioClip> buttonPress = new List<AudioClip>();
+
+	//public AudioClip buttonPress;
 	public AudioSource efxSource;
     public string startGame;
 	public GameObject aboutPanel;
@@ -55,7 +57,7 @@ public class MenuScript : MonoBehaviour {
 
 	void Start(){
 		//Screen.SetResolution(Screen.currentResolution.width, Screen.currentResolution.height, true);
-		Screen.SetResolution(600, 800, false);
+		//Screen.SetResolution(600, 800, false);
 		Color tmp = aboutPanel.GetComponent<Image>().color;
 		tmp.a = 0;
 		aboutPanel.GetComponent<Image> ().color = tmp;
@@ -200,7 +202,7 @@ public class MenuScript : MonoBehaviour {
 
 
 	public void PlayGame(){		
-		PlaySingle (buttonPress, volume);
+		PlaySingle (buttonPress[0], volume);
         Invoke("NextLevel", 0.2f);        
 	}
 
@@ -210,7 +212,7 @@ public class MenuScript : MonoBehaviour {
     }
 
 	public void QuitGame(){
-		PlaySingle (buttonPress, volume);	
+		PlaySingle (buttonPress[0], volume);	
 		Application.Quit ();
 	}
 
@@ -218,12 +220,14 @@ public class MenuScript : MonoBehaviour {
 
 	public void ShowAbout(){
 		aboutPanel.SetActive (true);
-		aboutShow = true;
+        PlaySingle(buttonPress[0], volume);
+        aboutShow = true;
 	}
 
 	public void Close_About(){
 		aboutShow = false;
-		list_Tracker = 0;
+        PlaySingle(buttonPress[3], volume);
+        list_Tracker = 0;
 	}
 
 	public void Next(){
@@ -231,42 +235,48 @@ public class MenuScript : MonoBehaviour {
 			list_Tracker += 1;
 		}
 		nextRun = true;
-	}
+        PlaySingle(buttonPress[0], volume);
+    }
 
 	public void Back_Button(){
-		print ("test");
+		
 		if (list_Tracker > 0) {
 			list_Tracker -= 1;
 		}
 		backRun = true;
-	}
+        PlaySingle(buttonPress[0], volume);
+    }
 
 	//Settings panel
 	public void Show_Settings(){
 		settingsPanel.SetActive (true);
-		showSettings = true;
+        PlaySingle(buttonPress[0], volume);
+        showSettings = true;
 	}
 
 	public void Close_Settings(){
 		showSettings = false;
-	}
+        PlaySingle(buttonPress[3], volume);
+    }
 
 
 	public void Toggle_Music(){
 		contant_Script.instance.Music_Func ();
-		if (contant_Script.instance.music_mute)
+        PlaySingle(buttonPress[1], volume);
+        if (contant_Script.instance.music_mute)
 		{
 			musicImage.GetComponent<Image>().sprite = offSprite;
 		}
 		else
-		{				
+		{
 			musicImage.GetComponent<Image>().sprite = onSprite;
 		}
 	}
 
 	public void Toggle_Sound(){
 		contant_Script.instance.Sounds_Func ();
-		if (contant_Script.instance.music_mute)
+        PlaySingle(buttonPress[1], volume);
+        if (contant_Script.instance.music_mute)
 		{
 			efxImage.GetComponent<Image>().sprite = offSprite;
 		}
@@ -278,7 +288,8 @@ public class MenuScript : MonoBehaviour {
 
 
 	public void Toggle_Language(){
-		if (!contant_Script.instance.spanish) {			
+        PlaySingle(buttonPress[2], volume);
+        if (!contant_Script.instance.spanish) {			
 			language_Text.text = "Spanish";
 			//reset list to spanish About
 			aboutList.Clear();

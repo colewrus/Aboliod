@@ -85,7 +85,7 @@ public class GM : MonoBehaviour {
     {
 		//Set the screen resolution
 		//Screen.SetResolution(Screen.currentResolution.width, Screen.currentResolution.height, true);
-		Screen.SetResolution(600, 800, false);
+		//Screen.SetResolution(600, 800, false);
 
 		//Set the language
 		if (contant_Script.instance.spanish) {
@@ -184,17 +184,20 @@ public class GM : MonoBehaviour {
 		if (bricks == 1) {
 			Destroy (pepeClone);
 			Color tmpBrickAlpha = GameObject.FindGameObjectWithTag ("bricks").GetComponent<SpriteRenderer> ().color;
-			tmpBrickAlpha.a = 0;
-			print (tmpBrickAlpha);
+			tmpBrickAlpha.a = 0;			
 			GameObject.FindGameObjectWithTag ("bricks").GetComponent<SpriteRenderer> ().color = tmpBrickAlpha;
-			Color tmpBallAlpha = GameObject.FindGameObjectWithTag ("ball").GetComponent<SpriteRenderer> ().color;
-			tmpBallAlpha.a = 0;
-			GameObject.FindGameObjectWithTag ("ball").GetComponent<SpriteRenderer> ().color = tmpBallAlpha;
-			GameObject.FindGameObjectWithTag ("ball").GetComponent<Rigidbody2D> ().isKinematic = true;
-			brickWin.SetActive (true);
+            Debug.Log(GameObject.FindGameObjectWithTag("bricks").GetComponent<SpriteRenderer>().color);
+
+            Color tmpBallAlpha = GameObject.FindGameObjectWithTag ("ball").GetComponent<SpriteRenderer> ().color;
+            tmpBallAlpha.a = 0;
+            GameObject.FindGameObjectWithTag ("ball").GetComponent<SpriteRenderer> ().color = tmpBallAlpha;
+            GameObject.FindGameObjectWithTag("ball").GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePosition;
+
+
+            brickWin.SetActive (true);
 			SoundManager.Instance.PlaySingle (SoundManager.Instance.applause, 0.65f);
 			Instantiate (brickWin, Camera.main.ScreenToWorldPoint (new Vector3 (Screen.width / 2, (Screen.height/2)+(2* pepeWin.GetComponent<SpriteRenderer>().bounds.size.y), 5)), Quaternion.identity);
-			GameObject.FindGameObjectWithTag ("bricks").SetActive (false);	
+			//GameObject.FindGameObjectWithTag ("bricks").SetActive (false);	
 		
 		}
 
@@ -240,7 +243,7 @@ public class GM : MonoBehaviour {
 
     public void LoseLife()
     {
-        SoundManager.Instance.PlaySingle(SoundManager.Instance.deathSound, 0.1f);
+        SoundManager.Instance.PlaySingle(SoundManager.Instance.deathSound, 0.2f);
         lives--;
 		if (lives >= 0) {
 			livesText.text = "x" + lives;
@@ -271,7 +274,7 @@ public class GM : MonoBehaviour {
 
     public void DestroyBrick()
     {
-        SoundManager.Instance.PlaySingle(SoundManager.Instance.blockHit, 0.1f);
+        SoundManager.Instance.PlaySingle(SoundManager.Instance.blockHit, 0.2f);
         bricks--;
         CheckGameOver();
     }
