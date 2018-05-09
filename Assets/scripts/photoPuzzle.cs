@@ -49,7 +49,14 @@ public class photoPuzzle : MonoBehaviour {
 	IEnumerator exitI;
 	IEnumerator textI;
 
-	void Awake()
+    bool shuffleA = false;
+    bool shuffleB = false;
+    bool shuffleC = false;
+    bool shuffleD = false;
+    bool shuffleE = false;
+    bool shuffleF = false;
+
+    void Awake()
 	{
 		if (instance == null)
 			instance = this;
@@ -98,7 +105,7 @@ public class photoPuzzle : MonoBehaviour {
 			musicSource.volume = 0.5f;
 		}
 		//declare Ienumerators
-		print (SceneManager.GetActiveScene().buildIndex);
+		//print (SceneManager.GetActiveScene().buildIndex);
 
 		instruct_Bool = false;
 		//Panel Stuff
@@ -298,8 +305,69 @@ public class photoPuzzle : MonoBehaviour {
 		//maybe play countdown sound
 		yield return new WaitForSeconds (shuffleDelay);
 
+        
 		//shuffle the images
-		if (!shuffleBool) {	
+		if (!shuffleBool) {
+            if (!shuffleA)
+            {
+                slot = slides[1];
+                slides[0].GetComponent<puzzlePieceScript>().setMovement = true;
+                slides[0].GetComponent<puzzlePieceScript>().MovePiece(slot);
+                shuffleA = true;
+            }
+
+            yield return new WaitForSeconds(0.75f);
+
+            if (!shuffleB)
+            {
+                slot = slides[6];
+                slides[3].GetComponent<puzzlePieceScript>().setMovement = true;
+                slides[3].GetComponent<puzzlePieceScript>().MovePiece(slot);
+                shuffleB = true;
+            }
+
+            yield return new WaitForSeconds(0.5f);
+            if (!shuffleC)
+            {
+                slot = slides[5];
+                slides[2].GetComponent<puzzlePieceScript>().setMovement = true;
+                slides[2].GetComponent<puzzlePieceScript>().MovePiece(slot);
+                shuffleC = true;
+            }
+            yield return new WaitForSeconds(0.25f);
+            if (!shuffleD)
+            {
+                slot = slides[4];
+                slides[2].GetComponent<puzzlePieceScript>().setMovement = true;
+                slides[2].GetComponent<puzzlePieceScript>().MovePiece(slot);
+                shuffleD = true;
+            }
+            yield return new WaitForSeconds(0.25f);
+            if (!shuffleE)
+            {
+                slot = slides[4];
+                slides[8].GetComponent<puzzlePieceScript>().setMovement = true;
+                slides[8].GetComponent<puzzlePieceScript>().MovePiece(slot);
+                shuffleE = true;
+            }
+            yield return new WaitForSeconds(0.25f);
+            if (!shuffleF)
+            {
+                slot = slides[7];
+                slides[3].GetComponent<puzzlePieceScript>().setMovement = true;
+                slides[3].GetComponent<puzzlePieceScript>().MovePiece(slot);
+                shuffleF = true;
+            }
+
+            /*
+            slides[0].GetComponent<puzzlePieceScript>().SetTarget(slot);
+            slides[0].GetComponent<puzzlePieceScript>().tempX = slides[0].transform.localPosition.x;
+            slides[0].GetComponent<puzzlePieceScript>().tempY = slides[0].transform.localPosition.y;
+            slides[0].GetComponent<puzzlePieceScript>().moveActive = true;
+            shuffleBool = true;
+           */
+
+            /*
 			for (int i = 0; i < slides.Count; i++) {
 				//copy the position of one slide
 				Vector3 tempV = slides [i].transform.position;
@@ -311,10 +379,15 @@ public class photoPuzzle : MonoBehaviour {
 				slides [RandomIndex2].transform.position = tempV;
 				shuffleBool = true;
 				continueBool = true;
-			}
-		} 
+			}  
+            */
+            shuffleBool = true;
+        }
 
-	}
+        
+
+
+    }
 
 	public void NextLevel(){
 		if (continueBool) {

@@ -8,15 +8,15 @@ public class puzzlePieceScript : MonoBehaviour {
 
 	public GameObject outlineBKG;
 	GameObject slot;
-	float tempX;
-	float tempY;
+	public float tempX;
+	public float tempY; //this object's position to feed movement target for the slotted slide
 	float volume;
 	Vector3 tv;
-	bool moveActive;
+	public bool moveActive;
 	float clickTimer;
 	bool clickBool;
 
-
+    public bool setMovement;
 
 	// Use this for initialization
 	void Start () {
@@ -24,6 +24,7 @@ public class puzzlePieceScript : MonoBehaviour {
 		clickBool = false;
 		clickTimer = 0;
 		slot = null;
+        setMovement = false;
 		slot = photoPuzzle.instance.slot;
 
 		if (contant_Script.instance.sound_mute) {
@@ -49,6 +50,7 @@ public class puzzlePieceScript : MonoBehaviour {
 		if (moveActive) {
 			transform.localPosition = Vector3.MoveTowards (transform.localPosition, tv, 1.0f);
 			slot.transform.position = Vector3.MoveTowards (slot.transform.position, new Vector3 (tempX, tempY, -9), 1.0f);
+            Debug.Log(tv + " : " + transform.localPosition);
 			if (transform.localPosition == tv) {
 				moveActive = false;
 				photoPuzzle.instance.slot = null;	
@@ -63,6 +65,26 @@ public class puzzlePieceScript : MonoBehaviour {
 			outlineBKG.GetComponent<SpriteRenderer> ().sortingOrder = 0;
 		}
 	}
+
+    public Vector3 SetTarget(GameObject slotObj)
+    {
+        return tv = new Vector3(slot.transform.position.x, slot.transform.position.y, -9);
+    }
+
+
+    public void MovePiece(GameObject slotObj)
+    {
+        if (setMovement)
+        {
+            tv = new Vector3(slot.transform.position.x, slot.transform.position.y, -9);
+            tempX = transform.localPosition.x;
+            tempY = transform.localPosition.y;
+            moveActive = true;
+            Debug.Log("move function");
+            setMovement = false;
+        } 
+  
+    }
 
 	void OnMouseUp(){
 
