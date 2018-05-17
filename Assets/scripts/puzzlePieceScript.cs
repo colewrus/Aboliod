@@ -14,14 +14,13 @@ public class puzzlePieceScript : MonoBehaviour {
 	Vector3 tv;
 	public bool moveActive;
 	float clickTimer;
-	bool clickBool;
+
 
     public bool setMovement;
 
 	// Use this for initialization
 	void Start () {
 		moveActive = false;
-		clickBool = false;
 		clickTimer = 0;
 		slot = null;
         setMovement = false;
@@ -40,12 +39,6 @@ public class puzzlePieceScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		slot = photoPuzzle.instance.slot;
-		if (clickTimer < 5) {
-			clickTimer += 1 * Time.deltaTime;
-		} else {
-			clickBool = true;
-		}
-			
 
 		if (moveActive) {
 			transform.localPosition = Vector3.MoveTowards (transform.localPosition, tv, 1.0f);
@@ -88,7 +81,7 @@ public class puzzlePieceScript : MonoBehaviour {
 
 	void OnMouseUp(){
 
-		if(clickBool && !photoPuzzle.instance.winBool){
+		if(photoPuzzle.instance.clickBool && !photoPuzzle.instance.winBool){
 			if (photoPuzzle.instance.slot == null) {
 				photoPuzzle.instance.slot = gameObject;
 				Color outTMP = outlineBKG.GetComponent<SpriteRenderer> ().color;

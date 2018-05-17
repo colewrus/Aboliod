@@ -33,6 +33,8 @@ public class photoPuzzle : MonoBehaviour {
 	public bool continueBool;
 	public bool winBool;
 	public bool firstClick;
+    //enables tap control of puzzle
+    public bool clickBool;
 	public bool instruct_Bool;
 	public bool exit_Bool;
 	public Sprite final_img_lvl1_EN;
@@ -66,8 +68,8 @@ public class photoPuzzle : MonoBehaviour {
 	}
 	// Use this for initialization
 	void Start () {
-		
 
+        clickBool = false;
 
 		//Set the screen resolution
 		//Screen.SetResolution(Screen.currentResolution.width, Screen.currentResolution.height, true);
@@ -301,10 +303,8 @@ public class photoPuzzle : MonoBehaviour {
 
 		int tempInt = 0;
 
-
 		//maybe play countdown sound
 		yield return new WaitForSeconds (shuffleDelay);
-
         
 		//shuffle the images
 		if (!shuffleBool) {
@@ -359,34 +359,9 @@ public class photoPuzzle : MonoBehaviour {
                 shuffleF = true;
             }
 
-            /*
-            slides[0].GetComponent<puzzlePieceScript>().SetTarget(slot);
-            slides[0].GetComponent<puzzlePieceScript>().tempX = slides[0].transform.localPosition.x;
-            slides[0].GetComponent<puzzlePieceScript>().tempY = slides[0].transform.localPosition.y;
-            slides[0].GetComponent<puzzlePieceScript>().moveActive = true;
             shuffleBool = true;
-           */
-
-            /*
-			for (int i = 0; i < slides.Count; i++) {
-				//copy the position of one slide
-				Vector3 tempV = slides [i].transform.position;
-				//get random value for the slideList index
-				int RandomIndex2 = Random.Range (i, slides.Count);
-				//set current index to the position of a random object in the list
-				slides [i].transform.position = slides [RandomIndex2].transform.position;
-				//swap the position with the previous copy
-				slides [RandomIndex2].transform.position = tempV;
-				shuffleBool = true;
-				continueBool = true;
-			}  
-            */
-            shuffleBool = true;
+            clickBool = true;
         }
-
-        
-
-
     }
 
 	public void NextLevel(){
