@@ -1,0 +1,19 @@
+﻿<Properties StartupConfiguration="{5841F904-080A-55CC-B84D-556066B15A62}|">
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="Unity.Editor" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/scripts/photoPuzzle.cs">
+    <Files>
+      <File FileName="Assets/scripts/videoPlayScript.cs" Line="30" Column="9" />
+      <File FileName="Assets/scripts/Ball.cs" Line="49" Column="4" />
+      <File FileName="Assets/scripts/paddle.cs" Line="62" Column="14" />
+      <File FileName="Assets/scripts/killZoneScript.cs" Line="19" Column="1" />
+      <File FileName="Assets/scripts/GM.cs" Line="272" Column="98" />
+      <File FileName="Assets/scripts/photoPuzzle.cs" Line="304" Column="34" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+</Properties>

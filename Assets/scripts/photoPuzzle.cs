@@ -78,7 +78,7 @@ public class photoPuzzle : MonoBehaviour {
 
 		//set language
 		if (contant_Script.instance.spanish) {
-			tutorialText.text = "Tocá para reacomodar las piezas y completar la imagen.";
+			tutorialText.text = "Presione los cuadros adyacentes para ordenarlos y recrear la foto.";
 			if (SceneManager.GetActiveScene ().name == "slideLoad1") {
 				winImage.GetComponent<SpriteRenderer> ().sprite = final_img_lvl1_SP;
 			} else if (SceneManager.GetActiveScene ().name == "slideLoad2") {
@@ -86,7 +86,7 @@ public class photoPuzzle : MonoBehaviour {
 			}
 
 		} else if (!contant_Script.instance.spanish) {
-			tutorialText.text = "Tap to reshuffle the pieces and make the image whole.";
+			tutorialText.text = "Tap the neighboring tiles to shuffle them and rebuild the picture.";
 			if (SceneManager.GetActiveScene ().name == "slideLoad1") {
 				winImage.GetComponent<SpriteRenderer> ().sprite = final_img_lvl1_EN;
 			} else if (SceneManager.GetActiveScene ().name == "slideLoad2") {
@@ -173,18 +173,8 @@ public class photoPuzzle : MonoBehaviour {
 			StopCoroutine (setupI);
 		}
 		if (SceneManager.GetActiveScene().name == "slideLoad1") {			
-			if (!instruct_Bool && !exit_Bool) {
-				loadPanel = FadeIn_Img (textPanel, 3f);
-				loadText = FadeIn_Text (tutorialText, 3f);
-				loadButton = FadeIn_Img (exit_Botton, 3.5f);
-				StartCoroutine (loadPanel);
-				StartCoroutine (loadText);
-				StartCoroutine (loadButton);
-				Color tmpPan2 = textPanel.GetComponent<Image> ().color;
-				if (tmpPan2.a > 0.8f) {
-					instruct_Bool = true;
-				}
-			}
+
+
 
 			if (instruct_Bool) {
 				StopCoroutine (setupI);
@@ -192,6 +182,7 @@ public class photoPuzzle : MonoBehaviour {
 				StopCoroutine (loadText);
 				StopCoroutine (loadButton);
 			}
+
 
 			if (exit_Bool) {
 				textPanel.SetActive (false);
@@ -361,6 +352,21 @@ public class photoPuzzle : MonoBehaviour {
 
             shuffleBool = true;
             clickBool = true;
+        }
+
+        if (!instruct_Bool && !exit_Bool)
+        {
+            loadPanel = FadeIn_Img(textPanel, 3f);
+            loadText = FadeIn_Text(tutorialText, 3f);
+            loadButton = FadeIn_Img(exit_Botton, 3.5f);
+            StartCoroutine(loadPanel);
+            StartCoroutine(loadText);
+            StartCoroutine(loadButton);
+            Color tmpPan2 = textPanel.GetComponent<Image>().color;
+            if (tmpPan2.a > 0.8f)
+            {
+                instruct_Bool = true;
+            }
         }
     }
 

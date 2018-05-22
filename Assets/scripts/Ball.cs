@@ -50,4 +50,20 @@ public class Ball : MonoBehaviour {
 			
 	}
 
+	private void OnCollisionEnter2D(Collision2D collision)
+	{
+
+       
+        if(collision.transform.tag == "Player"){
+            float x = HitFactor(transform.position, collision.transform.position, collision.collider.bounds.size.x);
+            Debug.Log(x);
+            Vector2 dir = new Vector2(x, 1).normalized;
+            rb.velocity = dir * ballSpeed;
+        }
+	}
+
+    float HitFactor(Vector2 ballPos, Vector2 paddlePos, float paddleWidth){
+        return (ballPos.x - paddlePos.x) / paddleWidth;
+    }
+
 }

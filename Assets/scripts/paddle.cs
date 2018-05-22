@@ -66,7 +66,7 @@ public class paddle : MonoBehaviour {
 
 	}
 
-
+    /*
 	void OnCollisionEnter2D(Collision2D other){
 		//float difference = other.contacts [0].point.x - transform.position.x;
 		Vector2 delta = other.transform.position - transform.position;
@@ -74,7 +74,7 @@ public class paddle : MonoBehaviour {
 		Vector2 direction = new Vector2 (Mathf.Clamp (delta.normalized.x, -0.8f, 0.8f), Mathf.Clamp(delta.normalized.y, 0.85f, 1.0f));
 		other.gameObject.GetComponent<Rigidbody2D> ().velocity = direction * paddleDeflect;
 	}
-
+    */
 
 
 }
