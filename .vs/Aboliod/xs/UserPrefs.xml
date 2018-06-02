@@ -7,7 +7,7 @@
       <File FileName="Assets/scripts/paddle.cs" Line="62" Column="14" />
       <File FileName="Assets/scripts/killZoneScript.cs" Line="19" Column="1" />
       <File FileName="Assets/scripts/GM.cs" Line="272" Column="98" />
-      <File FileName="Assets/scripts/photoPuzzle.cs" Line="304" Column="34" />
+      <File FileName="Assets/scripts/photoPuzzle.cs" Line="344" Column="47" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />

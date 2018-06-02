@@ -65,11 +65,14 @@ public class photoPuzzle : MonoBehaviour {
 		else if (instance != this)
 			Destroy(gameObject);
 
+
+
 	}
 	// Use this for initialization
 	void Start () {
 
         clickBool = false;
+        
 
 		//Set the screen resolution
 		//Screen.SetResolution(Screen.currentResolution.width, Screen.currentResolution.height, true);
@@ -172,22 +175,19 @@ public class photoPuzzle : MonoBehaviour {
 		if (continueBool) {
 			StopCoroutine (setupI);
 		}
-		if (SceneManager.GetActiveScene().name == "slideLoad1") {			
-
-
-
-			if (instruct_Bool) {
-				StopCoroutine (setupI);
-				StopCoroutine (loadPanel);
-				StopCoroutine (loadText);
-				StopCoroutine (loadButton);
-			}
-
-
-			if (exit_Bool) {
-				textPanel.SetActive (false);
-			}
+	
+		if (instruct_Bool) {
+			StopCoroutine (setupI);
+			StopCoroutine (loadPanel);
+			StopCoroutine (loadText);
+			StopCoroutine (loadButton);
 		}
+
+
+		if (exit_Bool) {
+			textPanel.SetActive (false);
+		}
+		
 
 		if (shuffleBool) {
 			
@@ -325,7 +325,7 @@ public class photoPuzzle : MonoBehaviour {
                 slides[2].GetComponent<puzzlePieceScript>().MovePiece(slot);
                 shuffleC = true;
             }
-            yield return new WaitForSeconds(0.25f);
+            yield return new WaitForSeconds(0.5f);
             if (!shuffleD)
             {
                 slot = slides[4];
@@ -333,7 +333,7 @@ public class photoPuzzle : MonoBehaviour {
                 slides[2].GetComponent<puzzlePieceScript>().MovePiece(slot);
                 shuffleD = true;
             }
-            yield return new WaitForSeconds(0.25f);
+            yield return new WaitForSeconds(0.5f);
             if (!shuffleE)
             {
                 slot = slides[4];
@@ -341,7 +341,7 @@ public class photoPuzzle : MonoBehaviour {
                 slides[8].GetComponent<puzzlePieceScript>().MovePiece(slot);
                 shuffleE = true;
             }
-            yield return new WaitForSeconds(0.25f);
+            yield return new WaitForSeconds(0.5f);
             if (!shuffleF)
             {
                 slot = slides[7];

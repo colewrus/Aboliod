@@ -7,7 +7,7 @@ using System.Collections;
 public class puzzlePieceScript : MonoBehaviour {
 
 	public GameObject outlineBKG;
-	GameObject slot;
+	public GameObject slot;
 	public float tempX;
 	public float tempY; //this object's position to feed movement target for the slotted slide
 	float volume;
@@ -23,6 +23,7 @@ public class puzzlePieceScript : MonoBehaviour {
 		moveActive = false;
 		clickTimer = 0;
 		slot = null;
+
         setMovement = false;
 		slot = photoPuzzle.instance.slot;
 
@@ -37,10 +38,11 @@ public class puzzlePieceScript : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
 		slot = photoPuzzle.instance.slot;
 
 		if (moveActive) {
+			
 			transform.localPosition = Vector3.MoveTowards (transform.localPosition, tv, 1.0f);
 			slot.transform.position = Vector3.MoveTowards (slot.transform.position, new Vector3 (tempX, tempY, -9), 1.0f);
             Debug.Log(tv + " : " + transform.localPosition);
